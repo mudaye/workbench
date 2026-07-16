@@ -236,13 +236,21 @@ The project will intentionally expose the engineer to:
 
 ---
 
-# Architectural Vision
+# Architecture
 
-## Bounded Contexts
+Workbench has three complementary architectural concerns:
 
-Workbench is an engineering laboratory, so the bounded contexts should represent **independently evolvable engineering capabilities**. They should provide clear ownership, explicit interfaces, and opportunities to practice different disciplines. This aligns with the project's goals of evolving components independently and remaining technology-agnostic. 
+1. **Runtime Architecture** — the software that is built and executed.
+2. **Engineering Governance** — the system that captures, validates, and preserves engineering knowledge.
+3. **Repository Governance** — the rules that govern how the repository evolves over time.
 
-Following bounded contexts have been defined.
+These concerns are intentionally separated because they evolve at different rates and serve different purposes.
+
+---
+
+## Runtime Architecture
+
+Runtime architecture is composed of independently evolvable bounded contexts.
 
 | Bounded Context | Responsibility                                                                                            |
 | --------------- | --------------------------------------------------------------------------------------------------------- |
@@ -259,19 +267,77 @@ Following bounded contexts have been defined.
 | Infrastructure  | Provisioning, networking, compute, platform resources.                                                    |
 | Operations      | Monitoring, incident response, backups, recovery, maintenance.                                            |
 | Security        | Secure development practices, dependency security, supply chain, encryption.                              |
-| Documentation   | ADRs, architecture, runbooks, repository governance, engineering knowledge.                               |
-| Portfolio       | Evidence collection, capability tracking, competency validation.                                          |
-| Experimentation | Isolated feature experiments, prototypes, benchmarks, spike solutions, and comparative evaluations that can be introduced and removed without contaminating long-lived architecture. |
 
-### Why these contexts?
+Every bounded context should have a single responsibility, explicit interfaces, stable ownership, and the ability to evolve independently.
 
-Each has:
+---
 
-* a single engineering responsibility,
-* a relatively stable boundary,
-* explicit interfaces with neighboring contexts,
-* enough depth to justify independent evolution,
-* direct mapping to capabilities you want to practice over the lifetime of the project.  
+## Engineering Governance
+
+Engineering Governance exists to preserve engineering knowledge rather than runtime behaviour.
+
+It includes:
+
+| Bounded Context       | Responsibility                                                                                            |
+| --------------------- | --------------------------------------------------------------------------------------------------------- |
+| Documentation         | ADRs, architecture, runbooks, repository governance, engineering knowledge.                               |
+| Portfolio             | Evidence collection, capability tracking, competency validation.                                          |
+| Experimentation       | Isolated feature experiments, prototypes, benchmarks, spike solutions, and comparative evaluations that can be introduced and removed without contaminating long-lived architecture. |
+| Engineering Standards |  |
+
+Every significant engineering decision should ultimately become a durable repository artifact.
+
+---
+
+## Repository Governance
+
+Repository Governance defines how changes are permitted to enter and evolve the repository.
+
+### Repository Invariants
+
+Repository invariants are architectural rules that should remain stable over the lifetime of the project.
+
+Examples include:
+
+- Dependencies point toward abstractions.
+- Runtime code never depends on governance artifacts.
+- External technologies enter only through explicit boundaries.
+- Every dependency must be justified by a learning objective.
+
+### Change Workflow
+
+Every significant change follows the same lifecycle:
+
+Problem → Understand → Design → ADR (when required) → Implement → Verify → Document → Portfolio Evidence → Cookbook
+
+### AI Collaboration Rules
+
+AI is expected to assist engineering, not replace engineering judgment.
+
+AI may assist with analysis, decomposition, reviews, and implementation.
+
+AI should not introduce duplicate abstractions, bypass repository ownership, restructure architecture without justification, or violate repository invariants.
+
+### Ownership
+
+Every bounded context, interface, ADR, experiment, and long-lived artifact should have clear ownership.
+
+### Architectural Fitness Functions
+
+Architectural constraints should progressively become executable checks wherever practical.
+
+### Evolution Policy
+
+Architectural evolution should favor small, reversible, evidence-backed changes over rewrites.
+
+### Definition of Done
+
+A change is complete only when:
+
+- runtime behaviour is verified,
+- documentation is updated,
+- evidence is captured where appropriate,
+- architectural constraints remain satisfied.
 
 ---
 
