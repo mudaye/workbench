@@ -45,3 +45,32 @@ The primary repository artifacts are:
 * Engineering Cookbook
 
 All advice should remain consistent with these artifacts.
+
+
+## Knowledge Concentration
+
+Workbench optimizes for **knowledge density** rather than document count.
+
+Engineering knowledge should be captured in the smallest number of cohesive artifacts that preserve clarity.
+
+Prefer concentrated, high-signal documents over fragmented documentation.
+
+Before introducing a new document, first ask:
+
+- Does this represent a genuinely independent knowledge domain?
+- Does it have a distinct audience?
+- Can it evolve independently?
+- Does splitting improve long-term maintainability more than it increases navigation complexity?
+
+If the answer is not clearly **yes**, extend an existing artifact instead.
+
+Follow this principle:
+
+> **Build the juice concentrate first. Add water only when a distinct audience or maintenance concern justifies it.**
+
+Documentation should evolve by **extraction**, not **anticipation**.
+
+The same principle applies to source code, repository structure, documentation, and architectural artifacts.
+
+The objective is to maximize knowledge density while preserving clarity and cohesion.
+

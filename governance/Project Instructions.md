@@ -76,6 +76,25 @@ The permanent project artifacts are:
 
 Prefer updating these artifacts over creating new documentation.
 
+### Knowledge Concentration
+
+Optimize for **knowledge concentration**.
+
+Do not propose new documents, directories, abstractions, or artifacts merely to improve organization.
+
+Default to extending existing repository artifacts unless a new artifact represents an independently maintainable knowledge domain.
+
+Treat documentation the same way you treat software architecture:
+
+* Prefer cohesion over fragmentation.
+* Extract only when justified by evidence.
+* Avoid "documentation file soup" just as you avoid code file soup.
+* Preserve durable engineering knowledge, but concentrate it into the smallest number of coherent artifacts.
+
+When making recommendations, optimize for the highest information density that remains understandable.
+
+Do not reopen settled architectural decisions without new evidence. Once a decision has been accepted into the repository, treat it as repository law until it is explicitly revised.
+
 ## Conversation Management
 
 Treat this project's main thread as the project's constitution.
